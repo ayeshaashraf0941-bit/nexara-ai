@@ -1,0 +1,542 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#050B18;--navy2:#080F20;--navy3:#0C1528;--navy4:#111D35;
+  --cyan:#00C8FF;--cyan2:#00E5FF;--cyan-dim:rgba(0,200,255,0.1);
+  --cyan-border:rgba(0,200,255,0.22);--white:#F0F6FF;--muted:#6B82A8;
+  --card:rgba(12,21,40,0.9);--glass:rgba(255,255,255,0.04);
+  --gb:rgba(255,255,255,0.07);
+}
+body{background:var(--navy);color:var(--white);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+
+nav{background:rgba(5,11,24,0.94);backdrop-filter:blur(24px);padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gb);position:sticky;top:0;z-index:99}
+.logo-wrap{display:flex;align-items:center;gap:10px}
+.logo-mark{width:34px;height:34px;background:var(--cyan-dim);border:1px solid var(--cyan-border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:var(--cyan)}
+.logo-text{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:0.02em}
+.logo-text span{color:var(--cyan)}
+nav ul{display:flex;gap:2rem;list-style:none}
+nav a{text-decoration:none;color:var(--muted);font-size:0.8rem;letter-spacing:0.06em;transition:color 0.2s}
+nav a:hover{color:var(--white)}
+.nav-btn{background:var(--cyan);color:var(--navy);padding:0.5rem 1.4rem;border-radius:7px;font-size:0.8rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;transition:all 0.2s}
+.nav-btn:hover{background:var(--cyan2)}
+
+/* HERO */
+.hero{min-height:92vh;display:flex;align-items:center;padding:4rem 3rem;position:relative;overflow:hidden}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(0,200,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,200,255,0.035) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,rgba(0,0,0,0.5),transparent 80%)}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.o1{width:520px;height:520px;background:rgba(0,200,255,0.065);top:-120px;right:-60px}
+.o2{width:380px;height:380px;background:rgba(83,74,183,0.09);bottom:-60px;left:25%}
+
+.hero-left{flex:1;position:relative;z-index:2;max-width:590px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cyan-border);background:var(--cyan-dim);padding:0.35rem 1rem;border-radius:100px;font-size:0.7rem;letter-spacing:0.14em;color:var(--cyan);margin-bottom:1.8rem;text-transform:uppercase;font-weight:500}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5vw,4.6rem);font-weight:800;line-height:1.04;letter-spacing:-0.025em;margin-bottom:0.5rem}
+.h1-sub{font-family:'Syne',sans-serif;font-size:clamp(1.2rem,2.5vw,2rem);font-weight:400;color:var(--muted);letter-spacing:-0.01em;margin-bottom:1.5rem}
+.h1-sub span{color:var(--cyan)}
+.hero-desc{font-size:0.95rem;color:var(--muted);line-height:1.8;max-width:460px;margin-bottom:2.5rem;font-weight:300}
+.hero-btns{display:flex;gap:1rem}
+.btn-c{background:var(--cyan);color:var(--navy);padding:0.88rem 2.2rem;border-radius:8px;font-size:0.84rem;font-weight:600;border:none;cursor:pointer;transition:all 0.25s;font-family:'Space Grotesk',sans-serif;letter-spacing:0.03em}
+.btn-c:hover{background:var(--cyan2);transform:translateY(-2px)}
+.btn-o{background:transparent;color:var(--white);padding:0.88rem 2.2rem;border-radius:8px;font-size:0.84rem;font-weight:400;border:1px solid var(--gb);cursor:pointer;transition:all 0.25s;font-family:'Space Grotesk',sans-serif}
+.btn-o:hover{border-color:rgba(255,255,255,0.22)}
+
+.hero-right{flex:0 0 380px;margin-left:2.5rem;position:relative;z-index:2;display:flex;flex-direction:column;gap:1rem;perspective:1200px}
+.gc{background:var(--card);border:1px solid var(--gb);border-radius:14px;padding:1.35rem 1.5rem;backdrop-filter:blur(20px);position:relative;overflow:hidden;animation:fc 7s ease-in-out infinite;transform-style:preserve-3d}
+.gc::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,200,255,0.5),transparent)}
+.gc:nth-child(2){animation-delay:-2.5s;margin-left:1.5rem}
+.gc:nth-child(3){animation-delay:-5s;margin-left:0.4rem}
+@keyframes fc{0%,100%{transform:translateY(0) rotateX(1.5deg) rotateY(-3deg)}50%{transform:translateY(-10px) rotateX(-1.5deg) rotateY(3deg)}}
+.clbl{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--cyan);margin-bottom:0.5rem;font-weight:500;opacity:0.75}
+.ctitle{font-size:0.9rem;font-weight:500;margin-bottom:0.7rem}
+.cbig{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:700;color:var(--cyan);line-height:1}
+.cbig small{font-size:0.75rem;color:var(--muted);font-family:'Space Grotesk',sans-serif;font-weight:300}
+.mbars{display:flex;gap:4px;margin-top:0.75rem}
+.mb{flex:1;height:3px;background:rgba(0,200,255,0.1);border-radius:2px;overflow:hidden}
+.mbf{height:100%;background:linear-gradient(90deg,var(--cyan),var(--cyan2));border-radius:2px}
+.srow{display:flex;align-items:center;gap:6px;margin-top:0.6rem}
+.sd{width:7px;height:7px;border-radius:50%}
+.sg{background:#22C55E;box-shadow:0 0 5px rgba(34,197,94,0.5)}
+.sc{background:var(--cyan);box-shadow:0 0 5px rgba(0,200,255,0.4)}
+.srow span{font-size:0.73rem;color:var(--muted)}
+
+/* TICKER */
+.ticker{background:var(--navy3);border-top:1px solid var(--gb);border-bottom:1px solid var(--gb);padding:0.9rem 0;overflow:hidden}
+.ti{display:flex;gap:3.5rem;white-space:nowrap;animation:tick 28s linear infinite}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.titem{display:flex;align-items:center;gap:0.7rem;font-size:0.75rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase}
+.titem strong{color:var(--white);font-weight:500}
+.tsep{color:var(--cyan);opacity:0.35}
+
+/* STATS */
+.stats{display:flex;border-top:1px solid var(--gb);border-bottom:1px solid var(--gb);background:var(--navy2)}
+.stat{flex:1;padding:2.2rem 1.5rem;text-align:center;border-right:1px solid var(--gb)}
+.stat:last-child{border-right:none}
+.snum{font-family:'Syne',sans-serif;font-size:3rem;font-weight:700;color:var(--cyan);display:block;line-height:1;margin-bottom:0.4rem}
+.slbl{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted)}
+
+/* SERVICES */
+.section{padding:5rem 3rem}
+.section.alt{background:var(--navy2)}
+.eyebrow{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--cyan);display:flex;align-items:center;gap:0.7rem;margin-bottom:0.9rem}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--cyan)}
+.stitle{font-family:'Syne',sans-serif;font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;margin-bottom:0.55rem;letter-spacing:-0.01em}
+.stitle span{color:var(--cyan)}
+.ssub{font-size:0.88rem;color:var(--muted);margin-bottom:3rem;max-width:480px;line-height:1.75}
+
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.svc{background:var(--navy3);border:1px solid var(--gb);border-radius:14px;padding:1.8rem;transition:all 0.3s;position:relative;overflow:hidden}
+.svc::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);transition:left 0.5s}
+.svc:hover::after{left:100%}
+.svc:hover{border-color:var(--cyan-border);transform:translateY(-3px)}
+.sico{width:42px;height:42px;border-radius:9px;background:var(--cyan-dim);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;color:var(--cyan)}
+.svc h3{font-size:1rem;font-weight:600;margin-bottom:0.55rem}
+.svc p{font-size:0.8rem;color:var(--muted);line-height:1.7;margin-bottom:1.1rem}
+.tags{display:flex;gap:0.4rem;flex-wrap:wrap}
+.tag{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.22rem 0.6rem;border-radius:4px;background:var(--navy4);border:1px solid var(--gb);color:var(--muted);font-weight:500}
+
+/* CASE STUDIES */
+.cs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.cs-card{background:var(--navy3);border:1px solid var(--gb);border-radius:16px;overflow:hidden;transition:border-color 0.3s}
+.cs-card:hover{border-color:var(--cyan-border)}
+.cs-top{padding:1.8rem;border-bottom:1px solid var(--gb);position:relative}
+.cs-card:nth-child(1) .cs-top{background:linear-gradient(135deg,rgba(0,200,255,0.07),transparent)}
+.cs-card:nth-child(2) .cs-top{background:linear-gradient(135deg,rgba(83,74,183,0.1),transparent)}
+.cs-card:nth-child(3) .cs-top{background:linear-gradient(135deg,rgba(0,200,255,0.05),transparent)}
+.cs-card:nth-child(4) .cs-top{background:linear-gradient(135deg,rgba(22,197,94,0.07),transparent)}
+.cs-badge{display:inline-block;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;padding:0.2rem 0.7rem;border-radius:4px;background:var(--cyan-dim);border:1px solid var(--cyan-border);color:var(--cyan);margin-bottom:0.75rem;font-weight:500}
+.cs-badge.hr{background:rgba(83,74,183,0.12);border-color:rgba(83,74,183,0.3);color:#9B91E8}
+.cs-badge.re2{background:rgba(0,200,100,0.1);border-color:rgba(0,200,100,0.25);color:#4ADE80}
+.cs-top h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:0.4rem}
+.cs-top p{font-size:0.78rem;color:var(--muted);line-height:1.6}
+.cs-num{position:absolute;top:1.2rem;right:1.5rem;font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:rgba(0,200,255,0.05);line-height:1}
+.cs-body{padding:1.4rem 1.8rem}
+.cs-metrics{display:flex;gap:1.5rem;margin-bottom:1rem}
+.cs-m{display:flex;flex-direction:column;gap:2px}
+.cs-m strong{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cyan)}
+.cs-m span{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+.cs-desc{font-size:0.78rem;color:var(--muted);line-height:1.65}
+.demo-tag{display:inline-flex;align-items:center;gap:5px;font-size:0.65rem;color:var(--muted);margin-top:0.75rem;border:1px solid var(--gb);padding:0.2rem 0.6rem;border-radius:4px}
+
+/* NICHES */
+.niche-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:3rem}
+.nc{background:var(--navy3);border:1px solid var(--gb);border-radius:16px;overflow:hidden;transition:border-color 0.3s}
+.nc:hover{border-color:var(--cyan-border)}
+.nc-top{padding:1.8rem;border-bottom:1px solid var(--gb);position:relative}
+.nc.re .nc-top{background:linear-gradient(135deg,rgba(0,200,255,0.07),transparent)}
+.nc.hr .nc-top{background:linear-gradient(135deg,rgba(83,74,183,0.1),transparent)}
+.ncnum{position:absolute;top:1.2rem;right:1.5rem;font-family:'Syne',sans-serif;font-size:3.5rem;font-weight:800;color:rgba(0,200,255,0.05);line-height:1}
+.nc-top h3{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;margin-bottom:0.35rem}
+.nc-top p{font-size:0.8rem;color:var(--muted)}
+.nc-list{padding:1.4rem 1.8rem;list-style:none;display:flex;flex-direction:column;gap:0.7rem}
+.nc-list li{display:flex;gap:0.7rem;font-size:0.81rem;color:var(--muted);align-items:flex-start;line-height:1.5}
+.nc-list li i{color:var(--cyan);flex-shrink:0;margin-top:1px}
+
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-left{}
+.founder-card{background:var(--navy3);border:1px solid var(--gb);border-radius:16px;padding:2rem;margin-top:2rem}
+.fc-top{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--cyan-dim),rgba(83,74,183,0.2));border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--cyan)}
+.fc-info h4{font-size:1rem;font-weight:600;margin-bottom:2px}
+.fc-info p{font-size:0.78rem;color:var(--muted)}
+.fc-bio{font-size:0.83rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem}
+.skills-row{display:flex;gap:0.5rem;flex-wrap:wrap}
+.skill{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;padding:0.25rem 0.7rem;border-radius:5px;background:var(--cyan-dim);border:1px solid var(--cyan-border);color:var(--cyan);font-weight:500}
+.about-right{}
+.value-list{list-style:none;display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem}
+.vitem{display:flex;gap:1rem;align-items:flex-start}
+.vico{width:36px;height:36px;border-radius:8px;background:var(--cyan-dim);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--cyan)}
+.vitem h4{font-size:0.9rem;font-weight:600;margin-bottom:0.25rem}
+.vitem p{font-size:0.78rem;color:var(--muted);line-height:1.65}
+
+/* PRICING */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.pc{background:var(--navy3);border:1px solid var(--gb);border-radius:16px;padding:1.8rem;position:relative;transition:all 0.3s}
+.pc:hover{transform:translateY(-4px)}
+.pc.hot{border-color:var(--cyan-border);background:var(--navy4)}
+.hlabel{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--cyan);color:var(--navy);font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;padding:0.28rem 1.1rem;border-radius:0 0 7px 7px;font-weight:600}
+.pplan{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--cyan);margin-bottom:0.7rem;font-weight:500}
+.pc h3{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;margin-bottom:0.35rem}
+.pdesc{font-size:0.78rem;color:var(--muted);line-height:1.6;margin-bottom:1.25rem}
+.pnum{font-family:'Syne',sans-serif;font-size:2.7rem;font-weight:700;line-height:1;margin-bottom:1.4rem;display:flex;align-items:flex-start;gap:3px}
+.pnum sup{font-size:1rem;margin-top:0.35rem;color:var(--cyan)}
+.pnum span{font-size:0.8rem;color:var(--muted);font-family:'Space Grotesk',sans-serif;font-weight:300;align-self:flex-end;margin-bottom:3px}
+.flist{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.6rem;border-top:1px solid var(--gb);padding-top:1.1rem}
+.flist li{display:flex;gap:0.55rem;font-size:0.78rem;color:var(--muted);align-items:flex-start}
+.flist li i{color:var(--cyan);flex-shrink:0;font-size:13px;margin-top:1px}
+
+/* CTA */
+.cta-sec{padding:5rem 3rem;text-align:center;position:relative;overflow:hidden}
+.cta-orb{position:absolute;width:700px;height:300px;background:rgba(0,200,255,0.05);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(70px)}
+.cta-sec h2{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:800;margin-bottom:0.9rem;position:relative}
+.cta-sec h2 span{color:var(--cyan)}
+.cta-sec p{font-size:0.92rem;color:var(--muted);max-width:420px;margin:0 auto 2.5rem;line-height:1.75;position:relative}
+.cta-meta{font-size:0.72rem;color:var(--muted);margin-top:1rem;position:relative;opacity:0.7}
+
+/* FOOTER */
+footer{padding:2.5rem 3rem;border-top:1px solid var(--gb);display:flex;justify-content:space-between;align-items:center;background:var(--navy2)}
+footer p{font-size:0.76rem;color:var(--muted)}
+.flinks{display:flex;gap:2rem;list-style:none}
+.flinks a{font-size:0.76rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.flinks a:hover{color:var(--cyan)}
+</style>
+
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Nexara AI — AI automation agency by Ayesha, Faisalabad, Pakistan</h2>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-mark">Nx</div>
+    <div class="logo-text">Nexara <span>AI</span></div>
+  </div>
+  <ul>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Pricing</a></li>
+  </ul>
+  <a href="#" class="nav-btn">Book a Call →</a>
+</nav>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="hero-left">
+    <div class="pill"><span class="pdot"></span>AI Automation · Real Estate & HR</div>
+    <h1>The Next Era of</h1>
+    <div class="h1-sub">Intelligence. <span>Automated.</span></div>
+    <p class="hero-desc">We build AI agents and automation systems that work 24/7 — so your Real Estate agency books more visits and your HR team hires faster. Based in Faisalabad. Serving globally.</p>
+    <div class="hero-btns">
+      <button class="btn-c">See Our Work</button>
+      <button class="btn-o">Free Strategy Call</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="gc">
+      <div class="clbl">Real Estate Agent · Live Demo</div>
+      <div class="ctitle">Property inquiry bot</div>
+      <div class="cbig">340 <small>leads handled / mo</small></div>
+      <div class="mbars">
+        <div class="mb"><div class="mbf" style="width:92%"></div></div>
+        <div class="mb"><div class="mbf" style="width:75%"></div></div>
+        <div class="mb"><div class="mbf" style="width:88%"></div></div>
+        <div class="mb"><div class="mbf" style="width:61%"></div></div>
+        <div class="mb"><div class="mbf" style="width:95%"></div></div>
+      </div>
+      <div class="srow"><div class="sd sg"></div><span>Active · 99.1% uptime</span></div>
+    </div>
+    <div class="gc">
+      <div class="clbl">HR System · Demo</div>
+      <div class="ctitle">CV screening pipeline</div>
+      <div class="cbig">12× <small>faster shortlisting</small></div>
+      <div class="srow"><div class="sd sc"></div><span>Processing · 47 CVs today</span></div>
+    </div>
+    <div class="gc">
+      <div class="clbl">Make.com Automation</div>
+      <div class="ctitle">Hours saved per client</div>
+      <div class="cbig">200+ <small>hrs / month avg</small></div>
+      <div class="mbars">
+        <div class="mb"><div class="mbf" style="width:100%"></div></div>
+        <div class="mb"><div class="mbf" style="width:88%"></div></div>
+        <div class="mb"><div class="mbf" style="width:94%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ti">
+    <div class="titem"><strong>AI Agents</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>WhatsApp Automation</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Lead Qualification</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>CV Screening</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>CRM Integration</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Make.com Workflows</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Botpress · Voiceflow</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Real Estate Tech</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>HR Automation</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>AI Agents</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>WhatsApp Automation</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Lead Qualification</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>CV Screening</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>CRM Integration</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Make.com Workflows</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Botpress · Voiceflow</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>Real Estate Tech</strong><span class="tsep">—</span></div>
+    <div class="titem"><strong>HR Automation</strong><span class="tsep">—</span></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="snum">48h</span><span class="slbl">Avg Delivery Time</span></div>
+  <div class="stat"><span class="snum">3×</span><span class="slbl">Avg ROI for Clients</span></div>
+  <div class="stat"><span class="snum">200+</span><span class="slbl">Hours Saved / Month</span></div>
+  <div class="stat"><span class="snum">100%</span><span class="slbl">Satisfaction Guarantee</span></div>
+</div>
+
+<section class="section alt">
+  <div class="eyebrow">What We Build</div>
+  <h2 class="stitle">Solutions That <span>Actually Ship</span></h2>
+  <p class="ssub">Not concepts. Production-ready AI agents and automations delivered in days, not months.</p>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="sico"><i class="ti ti-robot" style="font-size:20px" aria-hidden="true"></i></div>
+      <h3>AI Chat Agents</h3>
+      <p>Conversational agents on WhatsApp, web, or Messenger that qualify leads, answer questions, and book appointments — 24/7, zero salary.</p>
+      <div class="tags"><span class="tag">Botpress</span><span class="tag">Voiceflow</span><span class="tag">GPT-4</span></div>
+    </div>
+    <div class="svc">
+      <div class="sico"><i class="ti ti-settings-automation" style="font-size:20px" aria-hidden="true"></i></div>
+      <h3>Workflow Automation</h3>
+      <p>Multi-step Make.com flows that sync your CRM, send follow-ups, generate reports, and eliminate every manual, repetitive task.</p>
+      <div class="tags"><span class="tag">Make.com</span><span class="tag">Zapier</span><span class="tag">n8n</span></div>
+    </div>
+    <div class="svc">
+      <div class="sico"><i class="ti ti-file-text" style="font-size:20px" aria-hidden="true"></i></div>
+      <h3>CV Screening Systems</h3>
+      <p>AI pipelines that process hundreds of applications, rank candidates by fit score, and auto-schedule interviews with zero human bottleneck.</p>
+      <div class="tags"><span class="tag">AI Parsing</span><span class="tag">Auto-rank</span><span class="tag">Scheduling</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="eyebrow">Demo Projects</div>
+  <h2 class="stitle">Real Systems. <span>Built to Impress.</span></h2>
+  <p class="ssub">These demo builds showcase exactly what your clients would get — fully functional, real AI systems.</p>
+  <div class="cs-grid">
+    <div class="cs-card">
+      <div class="cs-top">
+        <div class="cs-num">01</div>
+        <span class="cs-badge">Real Estate</span>
+        <h3>Property Inquiry Agent</h3>
+        <p>WhatsApp bot that handles inbound property queries, qualifies leads by budget and timeline, and books site visits automatically.</p>
+      </div>
+      <div class="cs-body">
+        <div class="cs-metrics">
+          <div class="cs-m"><strong>340</strong><span>leads / mo</span></div>
+          <div class="cs-m"><strong>87%</strong><span>qualification rate</span></div>
+          <div class="cs-m"><strong>24/7</strong><span>availability</span></div>
+        </div>
+        <p class="cs-desc">Built on Botpress with Make.com CRM sync. Responds in under 3 seconds, handles 8 languages, escalates to human when needed.</p>
+        <div class="demo-tag"><i class="ti ti-code" style="font-size:12px" aria-hidden="true"></i> Live demo available</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-top">
+        <div class="cs-num">02</div>
+        <span class="cs-badge hr">HR Tech</span>
+        <h3>CV Screening Pipeline</h3>
+        <p>Automated system that parses CVs, scores candidates against job criteria, and sends shortlist + interview invites within minutes.</p>
+      </div>
+      <div class="cs-body">
+        <div class="cs-metrics">
+          <div class="cs-m"><strong>12×</strong><span>faster</span></div>
+          <div class="cs-m"><strong>95%</strong><span>accuracy</span></div>
+          <div class="cs-m"><strong>0</strong><span>manual steps</span></div>
+        </div>
+        <p class="cs-desc">Make.com pipeline with AI scoring. Integrates with any ATS. Handles 500+ CVs per batch. Auto-rejects, auto-schedules, auto-notifies.</p>
+        <div class="demo-tag"><i class="ti ti-code" style="font-size:12px" aria-hidden="true"></i> Live demo available</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-top">
+        <div class="cs-num">03</div>
+        <span class="cs-badge">Real Estate</span>
+        <h3>Lead Follow-Up Automation</h3>
+        <p>7-day WhatsApp drip sequence triggered when a lead goes cold — re-engages with property updates, new listings, and price drops.</p>
+      </div>
+      <div class="cs-body">
+        <div class="cs-metrics">
+          <div class="cs-m"><strong>40%</strong><span>re-engagement</span></div>
+          <div class="cs-m"><strong>7-day</strong><span>sequence</span></div>
+          <div class="cs-m"><strong>Auto</strong><span>triggered</span></div>
+        </div>
+        <p class="cs-desc">Make.com + WhatsApp Business API. Personalised by property type and budget. Stops automatically once lead replies.</p>
+        <div class="demo-tag"><i class="ti ti-code" style="font-size:12px" aria-hidden="true"></i> Live demo available</div>
+      </div>
+    </div>
+    <div class="cs-card">
+      <div class="cs-top">
+        <div class="cs-num">04</div>
+        <span class="cs-badge re2">HR Tech</span>
+        <h3>Employee FAQ Chatbot</h3>
+        <p>Internal HR bot that answers policy questions, leave requests, payroll queries — reducing HR team's repetitive workload by 60%.</p>
+      </div>
+      <div class="cs-body">
+        <div class="cs-metrics">
+          <div class="cs-m"><strong>60%</strong><span>load reduced</span></div>
+          <div class="cs-m"><strong>200+</strong><span>FAQs handled</span></div>
+          <div class="cs-m"><strong>Slack</strong><span>/ Web</span></div>
+        </div>
+        <p class="cs-desc">Voiceflow agent trained on company policies. Escalates complex queries to HR. Logs all interactions for audit trail.</p>
+        <div class="demo-tag"><i class="ti ti-code" style="font-size:12px" aria-hidden="true"></i> Live demo available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="eyebrow">Industries We Serve</div>
+  <h2 class="stitle">Deep Expertise in <span>Two Niches</span></h2>
+  <p class="ssub">We don't do everything for everyone. We go deep for Real Estate and HR teams only.</p>
+  <div class="niche-grid">
+    <div class="nc re">
+      <div class="nc-top">
+        <div class="ncnum">01</div>
+        <div class="eyebrow" style="margin-bottom:0.7rem">Industry</div>
+        <h3>Real Estate</h3>
+        <p>From first WhatsApp message to signed contract — fully automated.</p>
+      </div>
+      <ul class="nc-list">
+        <li><i class="ti ti-check" aria-hidden="true"></i>24/7 chatbot for property inquiries on WhatsApp & web</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>AI lead scoring and automatic CRM data entry</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Site visit booking with SMS and WhatsApp reminders</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Cold lead re-engagement automation sequences</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Monthly performance report auto-generation</li>
+      </ul>
+    </div>
+    <div class="nc hr">
+      <div class="nc-top">
+        <div class="ncnum">02</div>
+        <div class="eyebrow" style="margin-bottom:0.7rem">Industry</div>
+        <h3>Human Resources</h3>
+        <p>Hire smarter. Onboard faster. Cut admin to zero.</p>
+      </div>
+      <ul class="nc-list">
+        <li><i class="ti ti-check" aria-hidden="true"></i>AI-powered CV screening and candidate ranking</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Automated interview scheduling via email and WhatsApp</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Candidate status update bot for hiring managers</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Onboarding document collection automation</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Internal HR FAQ bot for employee self-service</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="eyebrow">The Founder</div>
+  <h2 class="stitle">Built by Someone Who <span>Actually Builds</span></h2>
+  <div class="about-wrap" style="margin-top:2.5rem">
+    <div class="about-left">
+      <div class="founder-card">
+        <div class="fc-top">
+          <div class="avatar">A</div>
+          <div class="fc-info">
+            <h4>Ayesha</h4>
+            <p>Founder & AI Automation Engineer · Faisalabad, Pakistan</p>
+          </div>
+        </div>
+        <p class="fc-bio">I started Nexara AI because I saw how much time Real Estate agents and HR teams waste on tasks that AI can handle in seconds. I'm not a big agency with 50 people — I'm one focused builder who knows exactly how to build systems that work. Every project I take, I build myself. Every automation I deliver, I've tested end-to-end. You get my full attention, not a junior's work.</p>
+        <div class="skills-row">
+          <span class="skill">Botpress</span>
+          <span class="skill">Voiceflow</span>
+          <span class="skill">Make.com</span>
+          <span class="skill">GPT-4</span>
+          <span class="skill">n8n</span>
+          <span class="skill">Zapier</span>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p class="ssub" style="margin-bottom:0">Why clients choose a solo specialist over a big agency:</p>
+      <ul class="value-list">
+        <li class="vitem">
+          <div class="vico"><i class="ti ti-focus" style="font-size:18px" aria-hidden="true"></i></div>
+          <div><h4>Laser focused</h4><p>I work in two niches only. That means I understand your problems better than any general agency ever could.</p></div>
+        </li>
+        <li class="vitem">
+          <div class="vico"><i class="ti ti-bolt" style="font-size:18px" aria-hidden="true"></i></div>
+          <div><h4>Fast turnaround</h4><p>No internal handoffs, no waiting for approvals. You brief me, I build it. Most projects ship in 48–72 hours.</p></div>
+        </li>
+        <li class="vitem">
+          <div class="vico"><i class="ti ti-shield-check" style="font-size:18px" aria-hidden="true"></i></div>
+          <div><h4>You own everything</h4><p>Full source code, full credentials, full documentation. No lock-in. It's your system, not mine to hold over you.</p></div>
+        </li>
+        <li class="vitem">
+          <div class="vico"><i class="ti ti-message-circle" style="font-size:18px" aria-hidden="true"></i></div>
+          <div><h4>Direct communication</h4><p>You message me, I respond. No account managers, no tickets. Just fast, clear answers from the person doing the work.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="eyebrow">Pricing</div>
+  <h2 class="stitle">Clear Prices. <span>Real Results.</span></h2>
+  <p class="ssub">Start small, see results, then scale. No lock-in until you're convinced.</p>
+  <div class="pgrid">
+    <div class="pc">
+      <div class="pplan">Starter</div>
+      <h3>Essential Agent</h3>
+      <p class="pdesc">One focused AI bot to test what automation can do for your business before committing more.</p>
+      <div class="pnum"><sup>$</sup>500 <span>/ project</span></div>
+      <ul class="flist">
+        <li><i class="ti ti-check" aria-hidden="true"></i>1 AI chatbot (WhatsApp or web)</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Basic lead capture flow</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>1 Make.com automation</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>3-day delivery · 1 revision</li>
+      </ul>
+      <button class="btn-o" style="width:100%;padding:0.72rem">Get Started</button>
+    </div>
+    <div class="pc hot">
+      <div class="hlabel">Most Popular</div>
+      <div class="pplan">Growth</div>
+      <h3>Full Automation</h3>
+      <p class="pdesc">End-to-end automation for your Real Estate or HR operations. This is where most clients start.</p>
+      <div class="pnum"><sup>$</sup>1,200 <span>/ project</span></div>
+      <ul class="flist">
+        <li><i class="ti ti-check" aria-hidden="true"></i>1 advanced multi-flow AI agent</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>CRM integration + lead scoring</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>3 Make.com workflows</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>WhatsApp + web deployment</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>5-day delivery · 2 revisions</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>30-day post-launch support</li>
+      </ul>
+      <button class="btn-c" style="width:100%;padding:0.72rem">Book a Call</button>
+    </div>
+    <div class="pc">
+      <div class="pplan">Enterprise</div>
+      <h3>Custom System</h3>
+      <p class="pdesc">Full-stack AI infrastructure with monthly support for growing teams who want to automate everything.</p>
+      <div class="pnum"><sup>$</sup>2,500 <span>+</span></div>
+      <ul class="flist">
+        <li><i class="ti ti-check" aria-hidden="true"></i>Multiple agents across all channels</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Full tech stack integration</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Monthly automation audit</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Analytics dashboard setup</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Monthly retainer option available</li>
+      </ul>
+      <button class="btn-o" style="width:100%;padding:0.72rem">Let's Talk</button>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-orb"></div>
+  <h2>Ready to Enter the <span>Next Era</span>?</h2>
+  <p>Book a free 30-minute strategy call with Ayesha. We'll map out exactly what's possible for your team — no pitch, no pressure.</p>
+  <button class="btn-c" style="font-size:0.88rem;padding:1rem 3rem">Book Free Strategy Call</button>
+  <p class="cta-meta">Based in Faisalabad, Pakistan · Serving clients globally · Response within 24 hours</p>
+</section>
+
+<footer>
+  <div>
+    <div class="logo-wrap" style="margin-bottom:0.35rem">
+      <div class="logo-mark">Nx</div>
+      <div class="logo-text">Nexara <span>AI</span></div>
+    </div>
+    <p>AI Automation Agency · Faisalabad, Pakistan</p>
+  </div>
+  <ul class="flinks">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Work</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">WhatsApp</a></li>
+  </ul>
+  <p>© 2025 Nexara AI by Ayesha. All rights reserved.</p>
+</footer>
